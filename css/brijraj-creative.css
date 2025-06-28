@@ -24,6 +24,13 @@ body {
   font-family: Geist, sans-serif;
 }
 
+h1, p {
+  transform: translateY(110%);
+  opacity: 0;
+  filter: blur(10px);
+}
+
+
 h1 {
   margin-top: 0;
   margin-bottom: 0;
