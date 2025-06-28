@@ -84,59 +84,62 @@
   <script type="text/javascript">
     gsap.registerPlugin(SplitText);
   </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      let headings = document.querySelectorAll('[data-split="heading"]')
-      headings.forEach(heading => {
-        SplitText.create(heading, {
-          type: "chars",
-          autoSplit: true,
-          mask: "chars",
-          onSplit(instance) {
-            return gsap.fromTo(instance.chars, {
-              yPercent: 110,
-              opacity: 0,
-              filter: "blur(10px)",
-              ease: "circ.out",
-            }, {
-              duration: 0.8,
-              yPercent: 0,
-              stagger: 0.1,
-              opacity: 1,
-              filter: "blur(0px)",
-              ease: "circ.out",
-            });
-          }
-        });
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    headings.forEach(heading => {
+      SplitText.create(heading, {
+        type: "chars",
+        autoSplit: true,
+        mask: "chars",
+        onSplit(instance) {
+          return gsap.fromTo(instance.chars, {
+            yPercent: 110,
+            opacity: 0,
+            filter: "blur(10px)",
+            ease: "circ.out",
+          }, {
+            duration: 0.8,
+            yPercent: 0,
+            stagger: 0.1,
+            opacity: 1,
+            filter: "blur(0px)",
+            ease: "circ.out",
+          });
+        }
       });
     });
-  </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      let para = document.querySelectorAll('[data-split="para"]')
-      para.forEach(para => {
-        SplitText.create(para, {
-          type: "lines",
-          autoSplit: true,
-          mask: "lines",
-          onSplit(instance) {
-            return gsap.from(instance.lines, {
-              yPercent: 110,
-              opacity: 0,
-              filter: "blur(10px)",
-              ease: "circ.out",
-            }, {
-              yPercent: 0,
-              stagger: 1,
-              opacity: 0,
-              filter: "blur(10px)",
-              ease: "circ.out",
-            });
-          }
-        });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let paras = document.querySelectorAll('p');
+    paras.forEach(para => {
+      SplitText.create(para, {
+        type: "lines",
+        autoSplit: true,
+        mask: "lines",
+        onSplit(instance) {
+          return gsap.fromTo(instance.lines, {
+            yPercent: 110,
+            opacity: 0,
+            filter: "blur(10px)",
+            ease: "circ.out",
+          }, {
+            duration: 1,
+            yPercent: 0,
+            stagger: 0.2,
+            opacity: 1,
+            filter: "blur(0px)",
+            ease: "circ.out",
+          });
+        }
       });
     });
-  </script>
+  });
+</script>
+
 </body>
 
 </html>
